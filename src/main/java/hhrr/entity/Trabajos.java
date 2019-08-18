@@ -25,9 +25,10 @@ public class Trabajos implements Serializable  {
 	
 	private String titulo;
 	private String descripcion;
-	private boolean estado;
+	private String estado;
 	private String empresa;
 	private String responsable;
+	private String asignacion;
 	
 	@Column(name = "creado_en")
 	@Temporal(TemporalType.DATE)
@@ -58,11 +59,11 @@ public class Trabajos implements Serializable  {
 		this.descripcion = descripcion;
 	}
 
-	public boolean isEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
@@ -82,6 +83,14 @@ public class Trabajos implements Serializable  {
 		this.responsable = responsable;
 	}
 
+	public String getAsignacion() {
+		return asignacion;
+	}
+
+	public void setAsignacion(String asignacion) {
+		this.asignacion = asignacion;
+	}
+
 	public Date getCreado_en() {
 		return creado_en;
 	}
@@ -98,10 +107,11 @@ public class Trabajos implements Serializable  {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((asignacion == null) ? 0 : asignacion.hashCode());
 		result = prime * result + ((creado_en == null) ? 0 : creado_en.hashCode());
 		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
 		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
-		result = prime * result + (estado ? 1231 : 1237);
+		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((responsable == null) ? 0 : responsable.hashCode());
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
@@ -117,6 +127,11 @@ public class Trabajos implements Serializable  {
 		if (getClass() != obj.getClass())
 			return false;
 		Trabajos other = (Trabajos) obj;
+		if (asignacion == null) {
+			if (other.asignacion != null)
+				return false;
+		} else if (!asignacion.equals(other.asignacion))
+			return false;
 		if (creado_en == null) {
 			if (other.creado_en != null)
 				return false;
@@ -132,7 +147,10 @@ public class Trabajos implements Serializable  {
 				return false;
 		} else if (!empresa.equals(other.empresa))
 			return false;
-		if (estado != other.estado)
+		if (estado == null) {
+			if (other.estado != null)
+				return false;
+		} else if (!estado.equals(other.estado))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -155,12 +173,12 @@ public class Trabajos implements Serializable  {
 	@Override
 	public String toString() {
 		return "Trabajos [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", estado=" + estado
-				+ ", empresa=" + empresa + ", responsable=" + responsable + ", creado_en=" + creado_en + "]";
+				+ ", empresa=" + empresa + ", responsable=" + responsable + ", asignacion=" + asignacion
+				+ ", creado_en=" + creado_en + "]";
 	}
-
+	
 	
 
-	
 	
 	
 	

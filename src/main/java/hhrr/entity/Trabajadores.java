@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+
 
 @Entity
 public class Trabajadores implements Serializable {
@@ -18,15 +18,15 @@ public class Trabajadores implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotEmpty
+	
 	private String nombre;
-	@NotEmpty
+	
 	private String profesion;
 	private String experiencia;
 	private String texto;
-	@NotEmpty
+	
 	private String contacto;
-	private boolean estado;
+	private String estado;
 	public Long getId() {
 		return id;
 	}
@@ -63,26 +63,21 @@ public class Trabajadores implements Serializable {
 	public void setContacto(String contacto) {
 		this.contacto = contacto;
 	}
-	public boolean isEstado() {
+	public String getEstado() {
 		return estado;
 	}
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 	public Trabajadores() {
 		
 	}
 	@Override
-	public String toString() {
-		return "Trabajadores [id=" + id + ", nombre=" + nombre + ", profesion=" + profesion + ", experiencia="
-				+ experiencia + ", texto=" + texto + ", contacto=" + contacto + ", estado=" + estado + "]";
-	}
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((contacto == null) ? 0 : contacto.hashCode());
-		result = prime * result + (estado ? 1231 : 1237);
+		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((experiencia == null) ? 0 : experiencia.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
@@ -104,7 +99,10 @@ public class Trabajadores implements Serializable {
 				return false;
 		} else if (!contacto.equals(other.contacto))
 			return false;
-		if (estado != other.estado)
+		if (estado == null) {
+			if (other.estado != null)
+				return false;
+		} else if (!estado.equals(other.estado))
 			return false;
 		if (experiencia == null) {
 			if (other.experiencia != null)
@@ -133,6 +131,13 @@ public class Trabajadores implements Serializable {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Trabajadores [id=" + id + ", nombre=" + nombre + ", profesion=" + profesion + ", experiencia="
+				+ experiencia + ", texto=" + texto + ", contacto=" + contacto + ", estado=" + estado + "]";
+	}
+	
+	
 	
 	
 	
