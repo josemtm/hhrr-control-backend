@@ -45,7 +45,18 @@ public class TrabajosService implements ITrabajosService {
 		
 		return trabajosDao.findById(id).orElse(null);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Trabajos> findAllCerradas() {
+		return trabajosDao.findAllCerradas();
+	}
 	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Trabajos> findAllAbiertas(){
+		return trabajosDao.findAllAbiertas();
+	}
 	
 
 }

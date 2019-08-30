@@ -14,4 +14,8 @@ public interface ITrabajosService {
 
 	public Trabajos findById(Long id);
 	
+	public List<Trabajos> findAllCerradas();
+	
+	List<Trabajos> findAllAbiertas();
+	
 }

@@ -21,7 +21,8 @@ public class Empresas implements Serializable  {
 	private String foto;
 	@NotEmpty
 	private String nombre;
-	private int telefono;
+	private String telefono;
+	private String rubro;
 	@Email
 	private String email;
 	public Long getId() {
@@ -42,11 +43,17 @@ public class Empresas implements Serializable  {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	public String getRubro() {
+		return rubro;
+	}
+	public void setRubro(String rubro) {
+		this.rubro = rubro;
 	}
 	public String getEmail() {
 		return email;
@@ -65,7 +72,8 @@ public class Empresas implements Serializable  {
 		result = prime * result + ((foto == null) ? 0 : foto.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + telefono;
+		result = prime * result + ((rubro == null) ? 0 : rubro.hashCode());
+		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
 		return result;
 	}
 	@Override
@@ -97,15 +105,26 @@ public class Empresas implements Serializable  {
 				return false;
 		} else if (!nombre.equals(other.nombre))
 			return false;
-		if (telefono != other.telefono)
+		if (rubro == null) {
+			if (other.rubro != null)
+				return false;
+		} else if (!rubro.equals(other.rubro))
+			return false;
+		if (telefono == null) {
+			if (other.telefono != null)
+				return false;
+		} else if (!telefono.equals(other.telefono))
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Empresas [id=" + id + ", foto=" + foto + ", nombre=" + nombre + ", telefono=" + telefono + ", email="
-				+ email + "]";
+		return "Empresas [id=" + id + ", foto=" + foto + ", nombre=" + nombre + ", telefono=" + telefono + ", rubro="
+				+ rubro + ", email=" + email + "]";
 	}
+	
+	
+	
 	
 	
 	

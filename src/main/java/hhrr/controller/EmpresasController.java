@@ -3,8 +3,10 @@ package hhrr.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +16,7 @@ import hhrr.services.EmpresasService;
 
 @RestController
 @RequestMapping("/empresas")
+@CrossOrigin(origins = "http://localhost:4200")	
 public class EmpresasController {
 
 	@Autowired
@@ -26,7 +29,7 @@ public class EmpresasController {
 	
 	//pendiente configurar la logica para guardar las fotos
 	@PostMapping("/guardar")
-	public void guardar(Empresas empresa) {
+	public void guardar(@RequestBody Empresas empresa) {
 		
 		empresasService.save(empresa);
 	}

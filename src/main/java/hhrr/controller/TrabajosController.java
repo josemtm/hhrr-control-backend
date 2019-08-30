@@ -3,8 +3,10 @@ package hhrr.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +16,7 @@ import hhrr.services.ITrabajosService;
 
 @RestController
 @RequestMapping("/trabajos")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TrabajosController {
 	
 	@Autowired
@@ -25,7 +28,7 @@ public class TrabajosController {
 	}
 	
 	@PostMapping("/guardar")
-	public void guardar(Trabajos trabajo) {
+	public void guardar(@RequestBody Trabajos trabajo) {
 		trabajosService.save(trabajo);
 	}
 	
@@ -44,4 +47,16 @@ public class TrabajosController {
 		
 		return trabajosService.findById(id);
 	}
+	
+	@RequestMapping("/cerrados")
+	public List<Trabajos> findAllCerrados(){
+		return trabajosService.findAllCerradas();
+	}
+	
+	@RequestMapping("/abiertos")
+	public List<Trabajos> findAllAbiertas(){
+		return trabajosService.findAllAbiertas();
+	}
+	
 }
+	
