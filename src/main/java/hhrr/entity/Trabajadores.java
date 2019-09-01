@@ -24,7 +24,7 @@ public class Trabajadores implements Serializable {
 	private String profesion;
 	private String experiencia;
 	private String texto;
-	
+	private String foto;
 	private String contacto;
 	private String estado;
 	public Long getId() {
@@ -57,6 +57,12 @@ public class Trabajadores implements Serializable {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 	public String getContacto() {
 		return contacto;
 	}
@@ -79,6 +85,7 @@ public class Trabajadores implements Serializable {
 		result = prime * result + ((contacto == null) ? 0 : contacto.hashCode());
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((experiencia == null) ? 0 : experiencia.hashCode());
+		result = prime * result + ((foto == null) ? 0 : foto.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((profesion == null) ? 0 : profesion.hashCode());
@@ -109,6 +116,11 @@ public class Trabajadores implements Serializable {
 				return false;
 		} else if (!experiencia.equals(other.experiencia))
 			return false;
+		if (foto == null) {
+			if (other.foto != null)
+				return false;
+		} else if (!foto.equals(other.foto))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -134,8 +146,10 @@ public class Trabajadores implements Serializable {
 	@Override
 	public String toString() {
 		return "Trabajadores [id=" + id + ", nombre=" + nombre + ", profesion=" + profesion + ", experiencia="
-				+ experiencia + ", texto=" + texto + ", contacto=" + contacto + ", estado=" + estado + "]";
+				+ experiencia + ", texto=" + texto + ", foto=" + foto + ", contacto=" + contacto + ", estado=" + estado
+				+ "]";
 	}
+	
 	
 	
 	
