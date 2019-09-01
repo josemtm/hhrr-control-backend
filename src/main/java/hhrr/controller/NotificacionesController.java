@@ -16,7 +16,7 @@ import hhrr.services.NotificacionesService;
 
 @RestController
 @RequestMapping("/notificaciones")
-@CrossOrigin(origins = "https://josemtm.github.io/duman-control")
+@CrossOrigin(origins = "https://josemtm.github.io/duman-control/")
 public class NotificacionesController {
 	
 	@Autowired

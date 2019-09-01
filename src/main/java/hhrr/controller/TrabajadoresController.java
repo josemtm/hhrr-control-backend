@@ -16,7 +16,7 @@ import hhrr.services.TrabajadoresService;
 
 @RestController
 @RequestMapping("/trabajadores")
-@CrossOrigin(origins = "https://josemtm.github.io/duman-control")
+@CrossOrigin(origins = "https://josemtm.github.io/duman-control/")
 public class TrabajadoresController {
 	
 	@Autowired
