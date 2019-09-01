@@ -16,7 +16,7 @@ import hhrr.services.EmpresasService;
 
 @RestController
 @RequestMapping("/empresas")
-@CrossOrigin(origins = "http://localhost:4200")	
+@CrossOrigin(origins = "https://josemtm.github.io/duman-control")	
 public class EmpresasController {
 
 	@Autowired
