@@ -35,6 +35,8 @@ public class TrabajadoresController {
 	@RequestMapping(value = "/eliminar/{id}", method = RequestMethod.DELETE)
 	public void eliminar(@PathVariable(value = "id") Long id) {
 		
+		 trabajadoresService.delete(id);
+		
 	}
 	
 	@PostMapping("/guardar")
